@@ -25,13 +25,12 @@ app.use(body_parser.urlencoded());
 app.use(express.static(__dirname + '/public'));
 
 const bot_questions = {
-  "q1": "please enter date (yyyy-mm-dd)",
-  "q2": "please enter time (hh:mm)",
+  "q1": "please enter date (dd/mm/yyyy)",
+  "q2": "please enter time (5:00)|(6:00)",
   "q3": "please enter full name",
-  "q4": "please enter gender",
-  "q5": "please enter phone number",
-  "q6": "please enter email",
-  "q7": "please leave a message"
+  "q4": "please enter phone number",
+  "q5": "Please enter address"
+  "q6": "please leave a message",
 }
 
 let current_question = '';
@@ -200,10 +199,8 @@ app.post('/admin/updateappointment', function(req,res){
   let data = {
     name:req.body.name,
     phone:req.body.phone,
-    email:req.body.email,
-    gender:req.body.gender,
-    doctor:req.body.doctor,
-    department:req.body.department,
+    package:req.body.package,
+    address:req.body.address,
     visit:req.body.visit,
     date:req.body.date,
     time:req.body.time,
@@ -413,10 +410,6 @@ function handleQuickReply(sender_psid, received_message) {
     
     current_question = 'q1';
     botQuestions(current_question, sender_psid);
-  }else if(received_message.startsWith("department:")){
-    let dept = received_message.slice(11);
-    userInputs[user_id].department = dept;
-    showDoctor(sender_psid);
   }else{
 
       switch(received_message) {                
@@ -467,21 +460,17 @@ const handleMessage = (sender_psid, received_message) => {
      current_question = 'q4';
      botQuestions(current_question, sender_psid);
   }else if(current_question == 'q4'){
-     console.log('GENDER ENTERED',received_message.text);
-     userInputs[user_id].gender = received_message.text;
+     console.log('PHONE NUMBER ENTERED',received_message.text);
+     userInputs[user_id].phone = received_message.text;
      current_question = 'q5';
      botQuestions(current_question, sender_psid);
   }else if(current_question == 'q5'){
-     console.log('PHONE NUMBER ENTERED',received_message.text);
-     userInputs[user_id].phone = received_message.text;
+     console.log('ADDRESS ENTERED',received_message.text);
+     userInputs[user_id].address = received_message.text;
      current_question = 'q6';
      botQuestions(current_question, sender_psid);
-  }else if(current_question == 'q6'){
-     console.log('EMAIL ENTERED',received_message.text);
-     userInputs[user_id].email = received_message.text;
-     current_question = 'q7';
-     botQuestions(current_question, sender_psid);
-  }else if(current_question == 'q7'){
+  }
+  else if(current_question == 'q6'){
      console.log('MESSAGE ENTERED',received_message.text);
      userInputs[user_id].message = received_message.text;
      current_question = '';
@@ -498,8 +487,8 @@ const handleMessage = (sender_psid, received_message) => {
       case "hi":
           hiReply(sender_psid);
         break;
-      case "hospital":
-          hospitalAppointment(sender_psid);
+      case "package":
+          showPackage(sender_psid);
         break;                
       case "text":
         textReply(sender_psid);
@@ -578,10 +567,10 @@ const handlePostback = (sender_psid, received_postback) => {
   console.log('BUTTON PAYLOAD', payload);
 
   
-  if(payload.startsWith("Doctor:")){
-    let doctor_name = payload.slice(7);
-    console.log('SELECTED DOCTOR IS: ', doctor_name);
-    userInputs[user_id].doctor = doctor_name;
+  if(payload.startsWith("Package:")){
+    let package_name = payload.slice(7);
+    console.log('SELECTED PACKAGE IS: ', package_name);
+    userInputs[user_id].package = package_name;
     console.log('TEST', userInputs);
     firstOrFollowUp(sender_psid);
   }else{
@@ -680,22 +669,22 @@ function webviewTest(sender_psid){
 start hospital
 **************/
 const hospitalAppointment = (sender_psid) => {
-   let response1 = {"text": "Welcome to ABC Hospital"};
+   let response1 = {"text": "Welcome to Made By Nadi"};
    let response2 = {
-    "text": "Please select department",
+    "text": "Please select a package",
     "quick_replies":[
             {
               "content_type":"text",
-              "title":"General Surgery",
-              "payload":"department:General Surgery",              
+              "title":"Wedding",
+              "payload":"department:Wedding",              
             },{
               "content_type":"text",
-              "title":"ENT",
-              "payload":"department:ENT",             
+              "title":"Graduation",
+              "payload":"department:Graduation",             
             },{
               "content_type":"text",
-              "title":"Dermatology",
-              "payload":"department:Dermatology", 
+              "title":"Donation",
+              "payload":"department:Donation", 
             }
 
     ]
@@ -707,43 +696,40 @@ const hospitalAppointment = (sender_psid) => {
 }
 
 
-const showDoctor = (sender_psid) => {
+const showPackage = (sender_psid) => {
     let response = {
       "attachment": {
         "type": "template",
         "payload": {
           "template_type": "generic",
           "elements": [{
-            "title": "James Smith",
-            "subtitle": "General Surgeon",
-            "image_url":"https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg",                       
+            "title": "Wedding",
+            "image_url":"https://discoverfarmersbranch.com/wp-content/uploads/Fondon-Wedding_Farmers-Branch_025_a-500x500.jpg",                       
             "buttons": [
                 {
                   "type": "postback",
-                  "title": "James Smith",
-                  "payload": "Doctor:James Smith",
+                  "title": "Wedding",
+                  "payload": "Package:Wedding",
                 },               
               ],
           },{
-            "title": "Kenneth Martinez",
-            "subtitle": "General Surgeon",
-            "image_url":"https://image.freepik.com/free-vector/doctor-icon-avatar-white_136162-58.jpg",                       
+            "title": "Graduation",
+            "image_url":"https://www.adriasolutions.co.uk/wp-content/uploads/2015/07/shutterstock_658847998-1000x526.jpg",                       
             "buttons": [
                 {
                   "type": "postback",
-                  "title": "Kenneth Martinez",
-                  "payload": "Doctor:Kenneth Martinez",
+                  "title": "Graduation",
+                  "payload": "Package:Graduation",
                 },               
               ],
           },{
-            "title": "Barbara Young",
-            "subtitle": "General Surgeon",
-            "image_url":"https://cdn.iconscout.com/icon/free/png-512/doctor-567-1118047.png",                       
+            "title": "Donation",
+            "image_url":"https://d.wildapricot.net/images/default-album/how-to-get-donations.jpg",                       
             "buttons": [
                 {
                   "type": "postback",
-                  "title": "Barbara Young",
-                  "payload": "Doctor:Barbara Young",
+                  "title": "Donation",
+                  "payload": "Package:Donation",
                 },               
               ],
           }
@@ -797,23 +783,18 @@ const botQuestions = (current_question, sender_psid) => {
   }else if(current_question == 'q6'){
     let response = {"text": bot_questions.q6};
     callSend(sender_psid, response);
-  }else if(current_question == 'q7'){
-    let response = {"text": bot_questions.q7};
-    callSend(sender_psid, response);
   }
 }
 
 const confirmAppointment = (sender_psid) => {
   console.log('APPOINTMENT INFO', userInputs);
-  let summery = "department:" + userInputs[user_id].department + "\u000A";
-  summery += "doctor:" + userInputs[user_id].doctor + "\u000A";
+  let summery += "package:" + userInputs[user_id].package + "\u000A";
   summery += "visit:" + userInputs[user_id].visit + "\u000A";
   summery += "date:" + userInputs[user_id].date + "\u000A";
   summery += "time:" + userInputs[user_id].time + "\u000A";
   summery += "name:" + userInputs[user_id].name + "\u000A";
-  summery += "gender:" + userInputs[user_id].gender + "\u000A";
   summery += "phone:" + userInputs[user_id].phone + "\u000A";
-  summery += "email:" + userInputs[user_id].email + "\u000A";
+  summery += "address:" + userInputs[user_id].address + "\u000A";
   summery += "message:" + userInputs[user_id].message + "\u000A";
 
   let response1 = {"text": summery};
