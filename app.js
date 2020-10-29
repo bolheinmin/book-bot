@@ -568,7 +568,7 @@ const handlePostback = (sender_psid, received_postback) => {
 
   
   if(payload.startsWith("Package:")){
-    let package_name = payload.slice(7);
+    let package_name = payload.slice(8);
     console.log('SELECTED PACKAGE IS: ', package_name);
     userInputs[user_id].package = package_name;
     console.log('TEST', userInputs);
