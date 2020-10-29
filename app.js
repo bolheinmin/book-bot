@@ -22,6 +22,7 @@ const uuidv4 = uuid();
 
 app.use(body_parser.json());
 app.use(body_parser.urlencoded());
+app.use(express.static(__dirname + '/public'));
 
 const bot_questions = {
   "q1": "please enter date (yyyy-mm-dd)",
