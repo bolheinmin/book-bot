@@ -788,7 +788,7 @@ const botQuestions = (current_question, sender_psid) => {
 
 const confirmAppointment = (sender_psid) => {
   console.log('APPOINTMENT INFO', userInputs);
-  let summery += "package:" + userInputs[user_id].package + "\u000A";
+  let summery = "package:" + userInputs[user_id].package + "\u000A";
   summery += "visit:" + userInputs[user_id].visit + "\u000A";
   summery += "date:" + userInputs[user_id].date + "\u000A";
   summery += "time:" + userInputs[user_id].time + "\u000A";
