@@ -29,7 +29,7 @@ const bot_questions = {
   "q2": "please enter time (5:00)|(6:00)",
   "q3": "please enter full name",
   "q4": "please enter phone number",
-  "q5": "Please enter address"
+  "q5": "Please enter address",
   "q6": "please leave a message",
 }
 
