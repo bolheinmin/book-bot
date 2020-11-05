@@ -725,7 +725,6 @@ const showFeedback = (sender_psid) => {
                 "elements": [{
                         "title": "my customer feedback",
                         "image_url": "https://i.imgur.com/kX1qZdV.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -740,7 +739,6 @@ const showFeedback = (sender_psid) => {
                     {
                         "title": "my customer feedback",
                         "image_url": "https://i.imgur.com/bKvmY8y.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -755,7 +753,6 @@ const showFeedback = (sender_psid) => {
                     {
                         "title": "my customer feedback",
                         "image_url": "https://i.imgur.com/Qfij8Dy.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -770,7 +767,6 @@ const showFeedback = (sender_psid) => {
                     {
                         "title": "my customer feedback",
                         "image_url": "https://i.imgur.com/24kKTQF.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -785,7 +781,6 @@ const showFeedback = (sender_psid) => {
                     {
                         "title": " my customer feedback ",
                         "image_url": "https://i.imgur.com/2f8azjC.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -800,7 +795,6 @@ const showFeedback = (sender_psid) => {
                     {
                         "title": "my customer feedback ",
                         "image_url": "https://i.imgur.com/kX1qZdV.jpg",
-                        "subtitle": "MMK : 250 lkh",
                         "default_action": {
                             "type": "web_url",
                             "url": "https://www.facebook.com/110838683814597/posts/141568527408279/?d=n",
@@ -1159,6 +1153,7 @@ const showPackage = (sender_psid) => {
                 "template_type": "generic",
                 "elements": [{
                         "title": "Wedding",
+                        "subtitle": "50000 MMK",
                         "image_url": "https://discoverfarmersbranch.com/wp-content/uploads/Fondon-Wedding_Farmers-Branch_025_a-500x500.jpg",
                         "buttons": [{
                             "type": "postback",
@@ -1167,6 +1162,7 @@ const showPackage = (sender_psid) => {
                         }, ],
                     }, {
                         "title": "Graduation",
+                        "subtitle": "50000 MMK",
                         "image_url": "https://www.adriasolutions.co.uk/wp-content/uploads/2015/07/shutterstock_658847998-1000x526.jpg",
                         "buttons": [{
                             "type": "postback",
@@ -1175,6 +1171,7 @@ const showPackage = (sender_psid) => {
                         }, ],
                     }, {
                         "title": "Donation",
+                        "subtitle": "50000 MMK",
                         "image_url": "https://d.wildapricot.net/images/default-album/how-to-get-donations.jpg",
                         "buttons": [{
                             "type": "postback",
