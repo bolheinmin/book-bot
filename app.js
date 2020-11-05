@@ -200,14 +200,6 @@ app.post('/admin/updateappointment', function(req, res) {
 
 
     let data = {
-        name: req.body.name,
-        phone: req.body.phone,
-        package: req.body.package,
-        address: req.body.address,
-        visit: req.body.visit,
-        date: req.body.date,
-        time: req.body.time,
-        message: req.body.message,
         status: req.body.status,
         doc_id: req.body.doc_id,
         ref: req.body.ref,
