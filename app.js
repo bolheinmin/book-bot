@@ -691,21 +691,21 @@ const showList = (sender_psid) => {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "welcome my page mady by nadi",
+                    "title": "Welcome to my MadebyNadi page",
                     "subtitle": "what can i help for u?",
                     "buttons": [{
                             "type": "postback",
-                            "title": "view Package",
+                            "title": "View Packages",
                             "payload": "view-package",
                         },
                         {
                             "type": "postback",
-                            "title": "view feedback",
+                            "title": "View Feedback",
                             "payload": "view-feedback",
                         },
                         {
                             "type": "postback",
-                            "title": "view sample photo",
+                            "title": "View Sample Photo",
                             "payload": "view-photo",
                         }
                     ],
@@ -1053,7 +1053,7 @@ const showGraduationPhoto = (sender_psid) => {
                 "template_type": "generic",
                 "elements": [{
                         "title": "Customer sample photo",
-                        "image_url": "https: //i.imgur.com/ZZj3eZB.jpg",
+                        "image_url": "https://i.imgur.com/gUGy90c.jpg?1",
                         "subtitle": "graduation",
                         "default_action": {
                             "type": "web_url",
