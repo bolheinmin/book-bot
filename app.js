@@ -587,7 +587,7 @@ const handlePostback = (sender_psid, received_postback) => {
             case "get_started":
                 showList(sender_psid);
                 break;
-            case "view-package":
+            case "make-appointment":
                 showPackage(sender_psid);
                 break;
             case "view-feedback":
@@ -695,8 +695,8 @@ const showList = (sender_psid) => {
                     "subtitle": "what can i help for u?",
                     "buttons": [{
                             "type": "postback",
-                            "title": "View Packages",
-                            "payload": "view-package",
+                            "title": "Make Appointment",
+                            "payload": "make-appointment",
                         },
                         {
                             "type": "postback",
